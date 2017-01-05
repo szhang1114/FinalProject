@@ -21,10 +21,15 @@ public class getstuff2{
 
         Document doc = parseXML(connection.getInputStream());
         NodeList descNodes = doc.getElementsByTagName("temp_f");
-
+		NodeList descWeat = doc.getElementsByTagName("weather");
         for(int i=0; i<descNodes.getLength();i++)
         {
             System.out.println(descNodes.item(i).getTextContent());
+			System.out.println("Done: "+i);
+        }
+		for(int i=0; i<descWeat.getLength();i++)
+        {
+            System.out.println(descWeat.item(i).getTextContent());
 			System.out.println("Done: "+i);
         }
     }
