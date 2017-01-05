@@ -20,11 +20,17 @@ public class getstuff2{
         URLConnection connection = url.openConnection();
         Document doc = parseXML(connection.getInputStream());
         NodeList descNodes = doc.getElementsByTagName("temp_f");
+		NodeList descWeather = doc.getElementsByTagName("weather");
         for(int i=0; i<descNodes.getLength();i++)
         {
             System.out.println(descNodes.item(i).getTextContent());
 			System.out.println("Done "+(i+1)+" thing");
         }
+		for(int i=0; i<descWeather.getLength();i++)
+		{
+			System.out.println(descWeather.item(i).getTextContent());
+			System.out.println("Done "+(i+1)+" thing");
+		}
     }
 	private Document parseXML(InputStream stream) throws Exception
     {
