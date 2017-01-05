@@ -18,14 +18,12 @@ public class getstuff2{
     {
         URL url = new URL("http://api.wunderground.com/api/2a8f76b8f5d220cf/conditions/q/NY/New_York.xml");
         URLConnection connection = url.openConnection();
-
         Document doc = parseXML(connection.getInputStream());
         NodeList descNodes = doc.getElementsByTagName("temp_f");
-
         for(int i=0; i<descNodes.getLength();i++)
         {
             System.out.println(descNodes.item(i).getTextContent());
-			System.out.println("Done: "+i);
+			System.out.println("Done "+(i+1)+" thing");
         }
     }
 	private Document parseXML(InputStream stream) throws Exception
