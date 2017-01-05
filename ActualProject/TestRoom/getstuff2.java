@@ -5,6 +5,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 public class getstuff2{
+	public static getstuff2(){
+	}
 	public static void main(String[] args){
 		try{
 			getstuff2 Bob = new getstuff2();
@@ -13,6 +15,14 @@ public class getstuff2{
 		}catch (Exception e){
 			e.printStackTrace();
 		}
+	}
+	public String[] getweather(String place){
+		String[] places = {""}
+		try{
+			URL url = new URL("http://api.wunderground.com/api/2a8f76b8f5d220cf/conditions/q/NY/New_York.xml");
+		}catch(Exception e){
+		}
+		
 	}
 	private void start() throws Exception
     {
