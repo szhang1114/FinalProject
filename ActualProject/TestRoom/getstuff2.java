@@ -16,14 +16,35 @@ public class getstuff2{
 			e.printStackTrace();
 		}
 	}
-	public String[] getweather(String place){
-		String[] places = {""}
-		try{
-			URL url = new URL("http://api.wunderground.com/api/2a8f76b8f5d220cf/conditions/q/NY/New_York.xml");
-		}catch(Exception e){
+	public String[] getweather(int placeindex){
+		/*
+		Beijing
+		Berlin
+		Hong Kong
+		Istanbul
+		London
+		Los Angeles
+		Madrid
+		New York = 40.731 -74.010 
+		Paris
+		Rio
+		Rome
+		Seoul
+		Shanghai
+		Taipei
+		Tokyo
+		Toronto
+		Washington DC
+		*/
+		String[] places = {
+				"China/Beijing",
+				"Germany/Berlin",
+				"UK/London.xml","canada/Toronto.xml","France/Paris.xml",
 		}
+		try{
+			URL url = new URL("http://api.wunderground.com/api/2a8f76b8f5d220cf/conditions/q/"+places[placeindex]+".xml");
+		}catch(Exception e){}}
 		
-	}
 	private void start() throws Exception
     {
         URL url = new URL("http://api.wunderground.com/api/2a8f76b8f5d220cf/conditions/q/NY/New_York.xml");
