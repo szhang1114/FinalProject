@@ -20,14 +20,14 @@ public class getstuff2{
 		/*
 		Beijing
 		Berlin
-		Hong Kong
+		Hong Kong = 22.396,114.109
 		Istanbul
 		London
 		Los Angeles
 		Madrid
 		New York = 40.731 -74.010 
 		Paris
-		Rio
+		Rio = -22.902 -43.2075
 		Rome
 		Seoul
 		Shanghai
@@ -39,7 +39,15 @@ public class getstuff2{
 		String[] places = {
 				"China/Beijing",
 				"Germany/Berlin",
-				"UK/London.xml","canada/Toronto.xml","France/Paris.xml",
+				"22.396,114.109",
+				"Turkey/Istanbul",
+				"UK/London",
+				"CA/Los_Angeles",
+				"Spain/Madrid",
+				"NY/New_York",
+				"France/Paris.xml",
+				"-22.902,-43.2075",
+				"canada/Toronto",
 		}
 		try{
 			URL url = new URL("http://api.wunderground.com/api/2a8f76b8f5d220cf/conditions/q/"+places[placeindex]+".xml");
