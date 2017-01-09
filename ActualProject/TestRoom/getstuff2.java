@@ -5,9 +5,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 public class getstuff2{
-	public static getstuff2(){
+	public getstuff2(){
 	}
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		try{
 			getstuff2 Bob = new getstuff2();
 			Bob.start();
@@ -15,8 +15,8 @@ public class getstuff2{
 		}catch (Exception e){
 			e.printStackTrace();
 		}
-	}
-	public String[] getweather(int placeindex){
+	}*/
+	public static String getweather(int placeindex){
 		/*
 		Beijing
 		Berlin
@@ -47,12 +47,30 @@ public class getstuff2{
 				"NY/New_York",
 				"France/Paris.xml",
 				"-22.902,-43.2075",
-				"canada/Toronto",
-		}
+				"Italy/Rome",
+				"SouthKorea/Seoul",
+				"canada/Toronto"
+		};
 		try{
 			URL url = new URL("http://api.wunderground.com/api/2a8f76b8f5d220cf/conditions/q/"+places[placeindex]+".xml");
-		}catch(Exception e){}}
-		
+			URLConnection connection = url.openConnection();
+			String retstring = "";
+        	Document doc = parseXML(connection.getInputStream());
+        	NodeList descNodes = doc.getElementsByTagName("temp_f");
+			NodeList descWeat = doc.getElementsByTagName("weather");
+        	for(int i=0; i<descNodes.getLength();i++)
+        		{
+            	retstring += descNodes.item(i).getTextContent();
+        		}
+			retstring+=" ";
+			for(int i=0; i<descWeat.getLength();i++)
+        		{
+            	retstring += descWeat.item(i).getTextContent();
+        		}
+			return retstring;
+			}catch(Exception e){
+			return "Error";}}
+	
 	private void start() throws Exception
     {
         URL url = new URL("http://api.wunderground.com/api/2a8f76b8f5d220cf/conditions/q/NY/New_York.xml");
@@ -72,7 +90,7 @@ public class getstuff2{
 			System.out.println("Done: "+i);
         }
     }
-	private Document parseXML(InputStream stream) throws Exception
+	private static Document parseXML(InputStream stream) throws Exception
     {
         DocumentBuilderFactory objDocumentBuilderFactory = null;
         DocumentBuilder objDocumentBuilder = null;
