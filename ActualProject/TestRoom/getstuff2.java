@@ -7,15 +7,11 @@ import org.w3c.dom.NodeList;
 public class getstuff2{
 	public getstuff2(){
 	}
-	/*public static void main(String[] args){
-		try{
+	public static void main(String[] args){
 			getstuff2 Bob = new getstuff2();
-			Bob.start();
+			System.out.println(Bob.getweather(8));
 			System.out.println("Done");
-		}catch (Exception e){
-			e.printStackTrace();
-		}
-	}*/
+	}
 	public static String getweather(int placeindex){
 		/*
 		Beijing
@@ -25,7 +21,7 @@ public class getstuff2{
 		London
 		Los Angeles
 		Madrid
-		New York = 40.731 -74.010 
+		8New York = 40.731 -74.010 
 		Paris
 		Rio = -22.902 -43.2075
 		Rome
@@ -45,7 +41,7 @@ public class getstuff2{
 				"CA/Los_Angeles",
 				"Spain/Madrid",
 				"NY/New_York",
-				"France/Paris.xml",
+				"France/Paris",
 				"-22.902,-43.2075",
 				"Italy/Rome",
 				"SouthKorea/Seoul",
@@ -59,18 +55,18 @@ public class getstuff2{
         	NodeList descNodes = doc.getElementsByTagName("temp_f");
 			NodeList descWeat = doc.getElementsByTagName("weather");
         	for(int i=0; i<descNodes.getLength();i++)
-        		{
+        	{
             	retstring += descNodes.item(i).getTextContent();
-        		}
-			retstring+=" ";
+        	}
+			retstring+="|";
 			for(int i=0; i<descWeat.getLength();i++)
-        		{
+        	{
             	retstring += descWeat.item(i).getTextContent();
-        		}
+        	}
 			return retstring;
 			}catch(Exception e){
-			return "Error";}}
-	
+			e.printStackTrace();
+		return "Error";	}}
 	private void start() throws Exception
     {
         URL url = new URL("http://api.wunderground.com/api/2a8f76b8f5d220cf/conditions/q/NY/New_York.xml");
