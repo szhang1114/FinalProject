@@ -9,7 +9,7 @@ public class getstuff2{
 	}
 	public static void main(String[] args){
 			getstuff2 Bob = new getstuff2();
-			System.out.println(Bob.getweather(8));
+			System.out.println(Bob.getweather(7));
 			System.out.println("Done");
 	}
 	public static String getweather(int placeindex){
@@ -66,7 +66,7 @@ public class getstuff2{
 			return retstring;
 			}catch(Exception e){
 			e.printStackTrace();
-		return "Error";	}}
+		return "Error|Error";	}}
 	private void start() throws Exception
     {
         URL url = new URL("http://api.wunderground.com/api/2a8f76b8f5d220cf/conditions/q/NY/New_York.xml");
