@@ -12,6 +12,7 @@ public class Gui extends JFrame{
     private JButton bWeather, bClock, bExit, getWeather;
     private JLabel labelWeather, labelClock;
     private String time;
+    private JPanel weatherPanel;
     private double weather;
     
     public Gui(){
@@ -54,6 +55,7 @@ public class Gui extends JFrame{
 	bClock.addActionListener (
 				 new ActionListener(){
 				     public void actionPerformed(ActionEvent e){
+					 weatherPanel.setVisible(false);
 					 clockSetup();
 					 pack();
 				     }
@@ -67,7 +69,7 @@ public class Gui extends JFrame{
     }
 
     private void weatherSetup(){
-	JPanel weatherPanel = new JPanel();
+        weatherPanel = new JPanel();
 	weatherPanel.setPreferredSize(new Dimension(100, 200));
 	this.add(weatherPanel);
 
@@ -106,20 +108,30 @@ public class Gui extends JFrame{
 	
 
     private void updateWeather(){
+	weather = 45;
 	if(weather != 0){
-	   labelWeather.setText(weather + "°");
+	   labelWeather.setText(weather + " degrees");
 	}
 	else labelWeather.setText("");
     }
 
-    private void updateTime(){
-	time = SimpleDateFormat.getInstance().format(Calendar.getInstance().getTime());
-	labelClock.setText(time);
 
+
+    private void updateTime(){
+	while(true){
+
+	    time = SimpleDateFormat.getInstance().format(Calendar.getInstance().getTime());
+	    labelClock.setText(time);
+	    try{
+		Thread.sleep(1000);
+	    } catch (InterruptedException e){
+		e.printStackTrace();
+	    }
+	}
     }
     
 
-
+	
 
     
     public static void main(String[] args){
