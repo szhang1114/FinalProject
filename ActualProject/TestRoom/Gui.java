@@ -74,13 +74,13 @@ public class Gui extends JFrame{
 	this.add(weatherPanel);
 
 	//select city
-	/*String[] cities = {"New York", "Tokyo", "London"};
+	String[] cities = {"New York", "Tokyo", "London"};
 	JComboBox city = new JComboBox(cities);
 	city.setSelectedIndex(0);
-	weatherPanel.add(city);*/
-	JTextField city = new JTextField();
-	city.setPreferredSize(new Dimension(250, 30));
 	weatherPanel.add(city);
+	//JTextField city = new JTextField();
+	//city.setPreferredSize(new Dimension(250, 30));
+	//weatherPanel.add(city);
 
 	//get weather
 	getWeather = new JButton("Search");
@@ -118,16 +118,9 @@ public class Gui extends JFrame{
 
 
     private void updateTime(){
-	while(true){
-
 	    time = SimpleDateFormat.getInstance().format(Calendar.getInstance().getTime());
 	    labelClock.setText(time);
-	    try{
-		Thread.sleep(1000);
-	    } catch (InterruptedException e){
-		e.printStackTrace();
-	    }
-	}
+
     }
     
 
