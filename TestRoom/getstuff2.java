@@ -19,7 +19,7 @@ public class getstuff2{
 	4	London
 	5	Los Angeles
 	6	Madrid
-	7	8New York = 40.731 -74.010 
+	7	New York = 40.731 -74.010 
 	8	Paris
 	9	Rio = -22.902 -43.2075
 	10	Rome

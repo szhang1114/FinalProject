@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Gui extends JFrame{
+public class Demo extends JFrame{
 
     private JButton bWeather, bClock, bExit, getWeather;
     private JLabel labelWeather, labelClock;
@@ -15,7 +15,7 @@ public class Gui extends JFrame{
     private JPanel weatherPanel;
     private double weather;
     
-    public Gui(){
+    public Demo(){
 	setUp();
 	//gui defaults
 	setSize(new Dimension(300, 400));
@@ -128,7 +128,7 @@ public class Gui extends JFrame{
 
     
     public static void main(String[] args){
-	Gui test = new Gui();
+	Demo test = new Demo();
     }
 		
 
