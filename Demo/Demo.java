@@ -7,16 +7,19 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Demo extends JFrame{
+public class Demo extends JFrame {
 
     private JButton bWeather, bClock, bExit, getWeather;
-    private JLabel labelWeather, labelClock;
-    private String time;
-    private JPanel weatherPanel;
-    private double weather;
+    private JLabel labelWeather, labelClock, spacer;
+    private String time, selectedCity, weather;
+    private JComboBox<String> city;
+    private JPanel weatherPanel, clockPanel;
+    private boolean w, c;
     
     public Demo(){
 	setUp();
+	w = false;
+	c = false;
 	//gui defaults
 	setSize(new Dimension(300, 400));
 	setLocationRelativeTo(null);
@@ -40,8 +43,19 @@ public class Demo extends JFrame{
 	bWeather.addActionListener(
 				   new ActionListener(){
 				       public void actionPerformed(ActionEvent e){
-					   weatherSetup();
+					   if(c == true){
+					       clockPanel.setVisible(false);
+					       c = false;
+					       w = true;
+					       weatherSetup();
+					       pack();
+					   }
+					   else if(w == true){
+					   }
+					   else{weatherSetup();
 					   pack();
+					   w = true;
+					   }
 				       }
 				   }
 				   );
@@ -55,9 +69,19 @@ public class Demo extends JFrame{
 	bClock.addActionListener (
 				 new ActionListener(){
 				     public void actionPerformed(ActionEvent e){
-					 weatherPanel.setVisible(false);
-					 clockSetup();
-					 pack();
+					 if (w == true){
+					     weatherPanel.setVisible(false);
+					     w = false;
+					     c = true;
+					     clockSetup();
+					     pack();
+					 }
+					 else if(c == true){
+					 }
+					 else{clockSetup();
+					     pack();
+					     c = true;
+					 }
 				     }
 				 }
 				 );
@@ -65,7 +89,7 @@ public class Demo extends JFrame{
 
 	//exit button
 	bExit = new JButton("exit");
-	buttonPanel.add(bExit);
+	//buttonPanel.add(bExit);
     }
 
     private void weatherSetup(){
@@ -74,30 +98,43 @@ public class Demo extends JFrame{
 	this.add(weatherPanel);
 
 	//select city
-	String[] cities = {"New York", "Tokyo", "London"};
-	JComboBox city = new JComboBox(cities);
-	city.setSelectedIndex(0);
+        String[] cities = {"Beijing", "Berlin", "Hong Kong", "Istanbul", "London", "Los Angeles", "Madrid", "New York", "Paris", "Rio", "Rome", "Seoul"};
+	city = new JComboBox<String>(cities);
+	city.setSelectedIndex(7);
 	weatherPanel.add(city);
-	//JTextField city = new JTextField();
-	//city.setPreferredSize(new Dimension(250, 30));
-	//weatherPanel.add(city);
+	
+	/*JTextField city = new JTextField();
+	city.setPreferredSize(new Dimension(250, 30));
+	weatherPanel.add(city);*/
 
 	//get weather
-	getWeather = new JButton("Search");
+	getWeather = new JButton("");
+	getWeather.setIcon(new ImageIcon("search.png"));
+	validate();
+	getWeather.addActionListener(
+				     new ActionListener(){
+					 getstuff2 method = new getstuff2();
+					 public void actionPerformed(ActionEvent e){
+					     selectedCity = (String)city.getSelectedItem();
+					     weather = method.getWeather(method.getIndex(cities, selectedCity));
+					     updateWeather();
+					 }
+				     }
+				     );
+					     
 	weatherPanel.add(getWeather);
-
+	weatherPanel.add(spacer = new JLabel(" "), "span, grow");
 	
 	
 
 	//weather
 	labelWeather = new JLabel();
-	labelWeather.setPreferredSize(new Dimension(100, 100));
+	labelWeather.setPreferredSize(new Dimension(500, 50));
 	weatherPanel.add(labelWeather);
-	updateWeather();
     }
 
     private void clockSetup(){
-	JPanel clockPanel = new JPanel();
+	clockPanel = new JPanel();
 	clockPanel.setPreferredSize(new Dimension(100, 200));
 	this.add(clockPanel);
 
@@ -108,12 +145,15 @@ public class Demo extends JFrame{
 	
 
     private void updateWeather(){
-	weather = 45;
-	if(weather != 0){
-	   labelWeather.setText(weather + " degrees");
+	if(weather.compareTo("") != 0){
+	    int split = weather.indexOf('|');
+	    String temp = weather.substring(0, split);
+	    String type = weather.substring(split + 1); 
+	    weather = "                       It is currently " + temp + " degrees in " + selectedCity + " and the weather is " + type;
+	    labelWeather.setText(weather);
 	}
 	else labelWeather.setText("");
-    }
+	}
 
 
 

@@ -10,7 +10,7 @@ public class getstuff2{
 			System.out.println(Bob.getweather(7));
 			System.out.println("Done");
 	}*/
-	public static String getweather(int placeindex){
+	public static String getWeather(int placeindex){
 		/*
 	0	Beijing
 	1	Berlin
@@ -80,6 +80,15 @@ public class getstuff2{
             throw e;
         }       
         return doc;
+    }
+
+    public static int getIndex(String[] cities, String city){
+	for(int i = 0; i < cities.length; i++){
+	    if(cities[i].equalsTo(city)){
+		return i;
+	    }
+	}
+	return -1;
     }
 
 		
