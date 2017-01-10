@@ -7,26 +7,26 @@ import org.w3c.dom.NodeList;
 public class getstuff2{
 	public getstuff2(){
 	}
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 			getstuff2 Bob = new getstuff2();
 			System.out.println(Bob.getweather(7));
 			System.out.println("Done");
-	}
+	}*/
 	public static String getweather(int placeindex){
 		/*
-		Beijing
-		Berlin
-		Hong Kong = 22.396,114.109
-		Istanbul
-		London
-		Los Angeles
-		Madrid
-		8New York = 40.731 -74.010 
-		Paris
-		Rio = -22.902 -43.2075
-		Rome
-		Seoul
-		Shanghai
+	0	Beijing
+	1	Berlin
+	2	Hong Kong = 22.396,114.109
+	3	Istanbul
+	4	London
+	5	Los Angeles
+	6	Madrid
+	7	8New York = 40.731 -74.010 
+	8	Paris
+	9	Rio = -22.902 -43.2075
+	10	Rome
+	11	Seoul
+	12	Shanghai
 		Taipei
 		Tokyo
 		Toronto
@@ -65,9 +65,9 @@ public class getstuff2{
         	}
 			return retstring;
 			}catch(Exception e){
-			e.printStackTrace();
-		return "Error|Error";	}}
-	private void start() throws Exception
+			//e.printStackTrace();
+		return "Error|Invalid City!";	}}
+	/*private void start() throws Exception
     {
         URL url = new URL("http://api.wunderground.com/api/2a8f76b8f5d220cf/conditions/q/NY/New_York.xml");
         URLConnection connection = url.openConnection();
@@ -85,7 +85,7 @@ public class getstuff2{
             System.out.println(descWeat.item(i).getTextContent());
 			System.out.println("Done: "+i);
         }
-    }
+    }*/
 	private static Document parseXML(InputStream stream) throws Exception
     {
         DocumentBuilderFactory objDocumentBuilderFactory = null;
