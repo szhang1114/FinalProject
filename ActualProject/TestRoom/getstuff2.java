@@ -5,8 +5,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 public class getstuff2{
-	public getstuff2(){
-	}
 	/*public static void main(String[] args){
 			getstuff2 Bob = new getstuff2();
 			System.out.println(Bob.getweather(7));
@@ -54,38 +52,18 @@ public class getstuff2{
         	Document doc = parseXML(connection.getInputStream());
         	NodeList descNodes = doc.getElementsByTagName("temp_f");
 			NodeList descWeat = doc.getElementsByTagName("weather");
-        	for(int i=0; i<descNodes.getLength();i++)
-        	{
+        	for(int i=0; i<descNodes.getLength();i++){
             	retstring += descNodes.item(i).getTextContent();
         	}
 			retstring+="|";
-			for(int i=0; i<descWeat.getLength();i++)
-        	{
+			for(int i=0; i<descWeat.getLength();i++){
             	retstring += descWeat.item(i).getTextContent();
         	}
 			return retstring;
 			}catch(Exception e){
-			//e.printStackTrace();
-		return "Error|Invalid City!";	}}
-	/*private void start() throws Exception
-    {
-        URL url = new URL("http://api.wunderground.com/api/2a8f76b8f5d220cf/conditions/q/NY/New_York.xml");
-        URLConnection connection = url.openConnection();
-
-        Document doc = parseXML(connection.getInputStream());
-        NodeList descNodes = doc.getElementsByTagName("temp_f");
-		NodeList descWeat = doc.getElementsByTagName("weather");
-        for(int i=0; i<descNodes.getLength();i++)
-        {
-            System.out.println(descNodes.item(i).getTextContent());
-			System.out.println("Done: "+i);
-        }
-		for(int i=0; i<descWeat.getLength();i++)
-        {
-            System.out.println(descWeat.item(i).getTextContent());
-			System.out.println("Done: "+i);
-        }
-    }*/
+		return "Error|Invalid City!";
+			}
+	}
 	private static Document parseXML(InputStream stream) throws Exception
     {
         DocumentBuilderFactory objDocumentBuilderFactory = null;
@@ -95,14 +73,12 @@ public class getstuff2{
         {
             objDocumentBuilderFactory = DocumentBuilderFactory.newInstance();
             objDocumentBuilder = objDocumentBuilderFactory.newDocumentBuilder();
-
             doc = objDocumentBuilder.parse(stream);
         }
-        catch(Exception ex)
+        catch(Exception e)
         {
-            throw ex;
+            throw e;
         }       
-
         return doc;
     }
 
