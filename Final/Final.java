@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 
 import java.awt.*;
@@ -9,7 +8,7 @@ import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 
-public class Demo extends JFrame {
+public class Final extends JFrame {
 
     private JButton bWeather, bClock, bExit, getWeather;
     private JLabel labelWeather, labelClock, spacer;
@@ -19,7 +18,7 @@ public class Demo extends JFrame {
     private boolean w, c, runClock;
     private int color;
     
-    public Demo(){
+    public Final(){
 	setUp();
 	w = false;
 	c = false;
@@ -166,7 +165,7 @@ public class Demo extends JFrame {
 	validate();
 	getWeather.addActionListener(
 				     new ActionListener(){
-					 getstuff2 method = new getstuff2();
+					 GetWeather method = new GetWeather();
 					 public void actionPerformed(ActionEvent e){
 					     if(color > -1){
 						 color ++;
@@ -270,7 +269,7 @@ public class Demo extends JFrame {
 
     
     public static void main(String[] args){
-	Demo test = new Demo();
+	Final f = new Final();
 
 	
     }
